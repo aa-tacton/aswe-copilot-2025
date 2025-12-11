@@ -1,5 +1,20 @@
 // Todo App JavaScript
 
+// Update browser tab title based on current list
+function updateBrowserTitle() {
+    const listContent = document.getElementById('list-content');
+    if (listContent) {
+        const listName = listContent.dataset.listName;
+        const incompleteCount = parseInt(listContent.dataset.incompleteCount, 10);
+        
+        if (incompleteCount > 0) {
+            document.title = `(${incompleteCount}) ${listName} - Todo App`;
+        } else {
+            document.title = `${listName} - Todo App`;
+        }
+    }
+}
+
 // Theme toggle
 function toggleTheme() {
     const body = document.body;
@@ -312,6 +327,8 @@ document.body.addEventListener('htmx:afterSwap', (evt) => {
                 currentList.classList.add('active');
             }
         }
+        // Update browser title when navigating to a different list
+        updateBrowserTitle();
     }
 });
 

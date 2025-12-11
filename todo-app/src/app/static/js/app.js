@@ -5,7 +5,7 @@ function updateBrowserTitle() {
     const listContent = document.getElementById('list-content');
     if (listContent) {
         const listName = listContent.dataset.listName;
-        const incompleteCount = parseInt(listContent.dataset.incompleteCount || '0', 10);
+        const incompleteCount = parseInt(listContent.dataset.incompleteCount, 10);
         
         if (incompleteCount > 0) {
             document.title = `(${incompleteCount}) ${listName} - Todo App`;

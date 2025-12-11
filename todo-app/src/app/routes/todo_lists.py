@@ -125,10 +125,13 @@ async def get_list(
         .all()
     )
 
+    # Calculate incomplete todo count
+    incomplete_count = sum(1 for todo in todos if not todo.is_completed)
+
     return templates.TemplateResponse(
         request=request,
         name="partials/todo_list_content.html",
-        context={"list": list_obj, "todos": todos},
+        context={"list": list_obj, "todos": todos, "incomplete_count": incomplete_count},
     )
 
 

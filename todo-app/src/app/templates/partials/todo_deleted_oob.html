@@ -1,2 +1,7 @@
 <!-- Out-of-band update for sidebar count after delete -->
 <span id="list-{{ list_id }}-count" hx-swap-oob="true">{{ count }}</span>
+
+<!-- Out-of-band update for incomplete count in list-content data attribute and trigger title update -->
+<div id="list-content-count-updater" hx-swap-oob="true" 
+     hx-on::after-swap="document.getElementById('list-content').dataset.incompleteCount = '{{ count }}'; updateBrowserTitle(); this.remove();">
+</div>

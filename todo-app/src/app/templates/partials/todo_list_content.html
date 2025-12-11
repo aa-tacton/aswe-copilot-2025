@@ -3,7 +3,8 @@
      data-list-id="{{ current_list.id }}"
      data-list-name="{{ current_list.name | e }}"
      data-list-description="{{ (current_list.description or '') | e }}"
-     data-list-color="{{ current_list.color }}">
+     data-list-color="{{ current_list.color }}"
+     data-incomplete-count="{{ todos | selectattr('is_completed', 'false') | list | length if todos is defined else 0 }}">
     <div class="list-header">
         <div class="list-header-info">
             <div class="list-header-color" style="background-color: {{ current_list.color }}"></div>
